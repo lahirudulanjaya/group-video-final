@@ -13,8 +13,8 @@ const Container = styled.div`
 `;
 
 const StyledVideo = styled.video`
-    height: 40%;
-    width: 50%;
+    height: 30%;
+    width: 40%;
 `;
 
 const Video = (props) => {
@@ -31,6 +31,13 @@ const Video = (props) => {
     );
 }
 
+/**
+ * ncaught Error: Connection failed.
+ at h (index.js:17)
+ at f.value (index.js:654)
+ at RTCPeerConnection.t._pc.onconnectionstatechange (index.js:119)
+ * @type {{width: number, height: number}}
+ */
 
 const videoConstraints = {
     height: window.innerHeight / 2,
@@ -49,6 +56,9 @@ const Room = (props) => {
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
             userVideo.current.srcObject = stream;
             socketRef.current.emit("join room", roomID);
+            console.log('joined room')
+            console.log('loop all users')
+
             socketRef.current.on("all users", users => {
                 const peers = [];
                 users.forEach(userID => {
@@ -63,6 +73,7 @@ const Room = (props) => {
             })
 
             socketRef.current.on("user joined", payload => {
+                console.log(payload)
                 const peer = addPeer(payload.signal, payload.callerID, stream);
                 peersRef.current.push({
                     peerID: payload.callerID,
@@ -83,6 +94,21 @@ const Room = (props) => {
         const peer = new Peer({
             initiator: true,
             trickle: false,
+            config: {
+
+                iceServers: [
+                    {
+                        urls: "stun:numb.viagenie.ca",
+                        username: "sultan1640@gmail.com",
+                        credential: "98376683"
+                    },
+                    {
+                        urls: "turn:numb.viagenie.ca",
+                        username: "sultan1640@gmail.com",
+                        credential: "98376683"
+                    }
+                ]
+            },
             stream,
         });
 
@@ -97,6 +123,21 @@ const Room = (props) => {
         const peer = new Peer({
             initiator: false,
             trickle: false,
+            config: {
+
+                iceServers: [
+                    {
+                        urls: "stun:numb.viagenie.ca",
+                        username: "sultan1640@gmail.com",
+                        credential: "98376683"
+                    },
+                    {
+                        urls: "turn:numb.viagenie.ca",
+                        username: "sultan1640@gmail.com",
+                        credential: "98376683"
+                    }
+                ]
+            },
             stream,
         })
 
