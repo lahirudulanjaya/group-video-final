@@ -13,8 +13,8 @@ const Container = styled.div`
 `;
 
 const StyledVideo = styled.video`
-    height: 30%;
-    width: 40%;
+    height: 20%;
+    width: 30%;
 `;
 
 const Video = (props) => {
@@ -40,8 +40,10 @@ const Video = (props) => {
  */
 
 const videoConstraints = {
-    height: window.innerHeight / 2,
-    width: window.innerWidth / 2
+    // height: window.innerHeight / 2,
+    // width: window.innerWidth / 2
+    width: 320,
+    height: 240
 };
 
 const Room = (props) => {
