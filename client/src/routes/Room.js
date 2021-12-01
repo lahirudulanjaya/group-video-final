@@ -43,7 +43,8 @@ const videoConstraints = {
     // height: window.innerHeight / 2,
     // width: window.innerWidth / 2
     width: 320,
-    height: 240
+    height: 240,
+    frameRate: { max: 10 }
 };
 
 const Room = (props) => {
