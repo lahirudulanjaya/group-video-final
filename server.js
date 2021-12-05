@@ -18,14 +18,18 @@ app.get('*', (req, res) => {
 });
 io.on('connection', socket => {
     socket.on("join room", roomID => {
+        console.log("joining room")
         if (users[roomID]) {
             const length = users[roomID].length;
+            console.log("room Id "+roomID)
+            console.log("length of users in the room "+ length)
             if (length === 10) {
                 socket.emit("room full");
                 return;
             }
             users[roomID].push(socket.id);
         } else {
+            console.log("initial room")
             users[roomID] = [socket.id];
         }
         socketToRoom[socket.id] = roomID;
