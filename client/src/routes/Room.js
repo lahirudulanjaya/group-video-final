@@ -118,6 +118,12 @@ const Room = (props) => {
             socketRef.current.emit("sending signal", { userToSignal, callerID, signal })
         })
 
+        peer._onIceStateChange = function () {
+           if(peer._pc.iceConnectionState === 'disconnected') {
+                removePeer(peer)
+            }
+        }
+
         return peer;
     }
 
@@ -140,6 +146,11 @@ const Room = (props) => {
             },
             stream,
         })
+        peer._onIceStateChange = function () {
+            if(peer._pc.iceConnectionState === 'disconnected') {
+                removePeer(peer)
+            }
+        }
 
         peer.on("signal", signal => {
             socketRef.current.emit("returning signal", { signal, callerID })
@@ -148,6 +159,12 @@ const Room = (props) => {
         peer.signal(incomingSignal);
 
         return peer;
+    }
+
+    function removePeer(peer){
+        console.log(peers)
+        setPeers(p => [...p].filter(i => i._id !== peer._id)
+        );
     }
 
     return (
