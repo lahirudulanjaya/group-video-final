@@ -118,8 +118,9 @@ const Room = (props) => {
             socketRef.current.emit("sending signal", { userToSignal, callerID, signal })
         })
 
-        peer._onIceStateChange = function () {
-           if(peer._pc.iceConnectionState === 'disconnected') {
+        peer._pc.onconnectionstatechange = function () {
+
+            if(peer._pc.connectionState === 'disconnected') {
                 removePeer(peer)
             }
         }
@@ -146,8 +147,9 @@ const Room = (props) => {
             },
             stream,
         })
-        peer._onIceStateChange = function () {
-            if(peer._pc.iceConnectionState === 'disconnected') {
+        peer._pc.onconnectionstatechange = function () {
+            console.log(peer._pc.iceConnectionState)
+            if(peer._pc.connectionState === 'disconnected') {
                 removePeer(peer)
             }
         }
@@ -155,6 +157,11 @@ const Room = (props) => {
         peer.on("signal", signal => {
             socketRef.current.emit("returning signal", { signal, callerID })
         })
+        // peer.on("error", error => {
+        //     if(error.code ==='ERR_DATA_CHANNEL') {
+        //         peer.destroy()
+        //     }
+        // })
 
         peer.signal(incomingSignal);
 
@@ -171,9 +178,11 @@ const Room = (props) => {
         <Container>
             <StyledVideo muted ref={userVideo} autoPlay playsInline />
             {peers.map((peer, index) => {
-                return (
-                    <Video key={index} peer={peer} />
-                );
+                if(peer.readable) {
+                    return (
+                        <Video key={index} peer={peer}/>
+                    );
+                }
             })}
         </Container>
     );
