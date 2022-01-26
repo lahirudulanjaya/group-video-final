@@ -101,14 +101,7 @@ const Room = (props) => {
 
                 iceServers: [
                     {
-                        urls: "stun:numb.viagenie.ca",
-                        username: "nosystemanyone@gmail.com",
-                        credential: "123456"
-                    },
-                    {
-                        urls: "turn:numb.viagenie.ca",
-                        username: "nosystemanyone@gmail.com",
-                        credential: "123456"
+                        urls: "stun:stun.l.google.com:19302"
                     }]
             },
             stream,
@@ -135,15 +128,9 @@ const Room = (props) => {
             config: {
                 iceServers: [
                     {
-                        urls: "stun:numb.viagenie.ca",
-                        username: "nosystemanyone@gmail.com",
-                        credential: "123456"
-                    },
-                    {
-                        urls: "turn:numb.viagenie.ca",
-                        username: "nosystemanyone@gmail.com",
-                        credential: "123456"
-                    }]
+                        urls: "stun:stun.l.google.com:19302",
+                    }
+                ]
             },
             stream,
         })
