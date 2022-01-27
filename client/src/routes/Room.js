@@ -100,15 +100,14 @@ const Room = (props) => {
             config: {
                 iceServers: [
       {
-        urls: [
-          "stun:stun1.l.google.com:19302",
-          "stun:stun2.l.google.com:19302",
-        ],
+        urls: "stun:numb.viagenie.ca",
+                        username: "sultan1640@gmail.com",
+                        credential: "98376683"
       },
       {
-        urls: [
-          "stun:global.stun.twilio.com:3478?transport=udp",
-        ],
+        urls: "turn:numb.viagenie.ca",
+                        username: "sultan1640@gmail.com",
+                        credential: "98376683"
       },
     ],
             },
@@ -136,15 +135,14 @@ const Room = (props) => {
             config: {
                 iceServers: [
       {
-        urls: [
-          "stun:stun1.l.google.com:19302",
-          "stun:stun2.l.google.com:19302",
-        ],
+        urls: "stun:numb.viagenie.ca",
+        username: "sultan1640@gmail.com",
+        credential: "98376683"
       },
       {
-        urls: [
-          "stun:global.stun.twilio.com:3478?transport=udp",
-        ],
+      urls: "turn:numb.viagenie.ca",
+      username: "sultan1640@gmail.com",
+      credential: "98376683"
       },
     ]
             },
