@@ -99,17 +99,17 @@ const Room = (props) => {
             trickle: false,
             config: {
                 iceServers: [
-      {
-        urls: "stun:numb.viagenie.ca",
-                        username: "sultan1640@gmail.com",
-                        credential: "98376683"
-      },
-      {
-        urls: "turn:numb.viagenie.ca",
-                        username: "sultan1640@gmail.com",
-                        credential: "98376683"
-      },
-    ],
+    { url: "stun:stun.l.google.com:19302" },
+    { url: "stun:stun1.l.google.com:19302" },
+    { url: "stun:stun2.l.google.com:19302" },
+    { url: "stun:stun3.l.google.com:19302" },
+    { url: "stun:stun4.l.google.com:19302" },
+    {
+      url: "turn:numb.viagenie.ca",
+      credential: "nosystemanyone@gmail.com",
+      username: "123456",
+    },
+  ]
             },
             stream,
         });
@@ -134,17 +134,17 @@ const Room = (props) => {
             trickle: false,
             config: {
                 iceServers: [
-      {
-        urls: "stun:numb.viagenie.ca",
-        username: "sultan1640@gmail.com",
-        credential: "98376683"
-      },
-      {
-      urls: "turn:numb.viagenie.ca",
-      username: "sultan1640@gmail.com",
-      credential: "98376683"
-      },
-    ]
+    { url: "stun:stun.l.google.com:19302" },
+    { url: "stun:stun1.l.google.com:19302" },
+    { url: "stun:stun2.l.google.com:19302" },
+    { url: "stun:stun3.l.google.com:19302" },
+    { url: "stun:stun4.l.google.com:19302" },
+    {
+      url: "turn:numb.viagenie.ca",
+      credential: "nosystemanyone@gmail.com",
+      username: "123456",
+    },
+  ],
             },
             stream,
         })
