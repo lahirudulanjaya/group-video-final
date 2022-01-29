@@ -99,18 +99,18 @@ const Room = (props) => {
             trickle: false,
             config: {
                 iceServers: [
-                {
-                    urls: ["stun:eu-turn4.xirsys.com"]
-                },
-                {
-                    username: "ml0jh0qMKZKd9P_9C0UIBY2G0nSQMCFBUXGlk6IXDJf8G2uiCymg9WwbEJTMwVeiAAAAAF2__hNSaW5vbGVl",
-                    credential: "4dd454a6-feee-11e9-b185-6adcafebbb45",
-                    urls: [
-                        "turn:eu-turn4.xirsys.com:80?transport=udp",
-                        "turn:eu-turn4.xirsys.com:3478?transport=tcp"
-                    ]
-                }
-            ]
+                    {
+                        urls: ["stun:stun.speakez.chat"]
+                    },
+                    {
+                        username: "sez",
+                        credential: "Qbb8ccQxBrV5VL8R",
+                        urls: [
+                            "turn:turn.speakez.chat:3478?transport=udp",
+                            "turn:turn.speakez.chat:3478?transport=tcp"
+                        ]
+                    }
+                ]
             },
             stream,
         });
@@ -135,18 +135,18 @@ const Room = (props) => {
             trickle: false,
             config: {
                 iceServers: [
-                {
-                    urls: ["stun:eu-turn4.xirsys.com"]
-                },
-                {
-                    username: "ml0jh0qMKZKd9P_9C0UIBY2G0nSQMCFBUXGlk6IXDJf8G2uiCymg9WwbEJTMwVeiAAAAAF2__hNSaW5vbGVl",
-                    credential: "4dd454a6-feee-11e9-b185-6adcafebbb45",
-                    urls: [
-                        "turn:eu-turn4.xirsys.com:80?transport=udp",
-                        "turn:eu-turn4.xirsys.com:3478?transport=tcp"
-                    ]
-                }
-            ]
+                    {
+                        urls: ["stun:stun.speakez.chat"]
+                    },
+                    {
+                        username: "sez",
+                        credential: "Qbb8ccQxBrV5VL8R",
+                        urls: [
+                            "turn:turn.speakez.chat:3478?transport=udp",
+                            "turn:turn.speakez.chat:3478?transport=tcp"
+                        ]
+                    }
+                ]
             },
             stream,
         })
